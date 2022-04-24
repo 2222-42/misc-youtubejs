@@ -92,3 +92,4 @@ Thumbs.db
 
 # downloaded videos
 *.mp4
+yt_oauth_creds.json
