@@ -12,10 +12,16 @@ async function start() {
       console.log('Quality must be an integer');
       return;
     }
-    
+
+    const videoId = process.env.VIDEO_ID;
+    if (videoId === '') {
+        console.log('Video ID is required');
+        return;
+    }
+
   const youtube = await new Innertube();
 
-  const video = await youtube.getDetails(process.env.VIDEO_ID);
+  const video = await youtube.getDetails(videoId);
   
   const stream = youtube.download(video.id, {
     format: 'mp4', // Optional, defaults to mp4 and I recommend to leave it as it is unless you know what you're doing
