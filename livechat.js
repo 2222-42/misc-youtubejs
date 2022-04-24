@@ -13,9 +13,15 @@ async function start() {
   
   const livechat = video.getLivechat();
 
+  let countOfLikes = '0'
+  let countOfViews = '0'
   // Updated stats about the livestream
   livechat.on('update-metadata', (data) => {
-    console.info('Info:', data);
+    if (data.likes !== countOfLikes || data.short_view_count !== countOfViews) {
+      countOfLikes = data.likes;
+      countOfViews = data.short_view_count;
+      console.info('Info:', data);
+    }    
   });
    
   // Fired whenever there is a new message or other chat events
