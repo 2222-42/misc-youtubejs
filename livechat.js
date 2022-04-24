@@ -1,4 +1,4 @@
-const Innertube = require('youtubei.js');
+import Innertube from 'youtubei.js';
 
 async function start() {
     const videoId = process.env.VIDEO_ID;
