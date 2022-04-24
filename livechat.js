@@ -20,8 +20,9 @@ async function start() {
    
   // Fired whenever there is a new message or other chat events
   livechat.on('chat-update', (message) => {
-    console.info(`- ${message.author.name}: ${message.text}\n\n`);
-    
+    let date = new Date(message.timestamp / 1000); // youtubei.js timestamp is in microseconds
+    console.info(`- ${message.author.name}(${message.author.channel_id}) at (${date.getDay()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}) :\n  ${message.text}\n\n`);
+  
     if(message.text == '!info') {
       livechat.sendMessage('Hello! This message was sent from YouTube.js');
     }
